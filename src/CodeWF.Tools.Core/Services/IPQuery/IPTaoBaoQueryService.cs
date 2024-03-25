@@ -11,21 +11,23 @@ public class IPTaoBaoQueryService : IIPQueryService
 
     public async Task<IPQueryInfo> QueryAsync(string ip, CancellationToken cancellationToken)
     {
-        string url = $"http://ip.taobao.com/outGetIpInfo?ip={ip}&accessKey=alibaba-inc";
-        string json = await _httpClient.GetStringAsync(url, cancellationToken);
+        var url = $"http://ip.taobao.com/outGetIpInfo?ip={ip}&accessKey=alibaba-inc";
+        var json = await _httpClient.GetStringAsync(url, cancellationToken);
         json = json
             .Replace("xx", string.Empty)
             .Replace("XX", string.Empty);
 
-        TaoBaoResponse? r = JsonSerializer.Deserialize<TaoBaoResponse>(json);
-        string? result = r.Message;
-        if (r.Code == 0)
+        var r = JsonSerializer.Deserialize<TaoBaoResponse>(json);
+        var result = r.Message;
+        if (r.Code != 0)
         {
-            TaoBaoData? data = r.Data;
-            List<string> list = new List<string> { data.Country, data.Region, data.City, data.Isp };
-            list.RemoveAll(string.IsNullOrWhiteSpace);
-            result = string.Join(" ", list);
+            return new IPQueryInfo("淘宝", ip, result);
         }
+
+        var data = r.Data;
+        var list = new List<string?> { data?.Country, data?.Region, data?.City, data?.Isp };
+        list.RemoveAll(string.IsNullOrWhiteSpace);
+        result = string.Join(" ", list);
 
         return new IPQueryInfo("淘宝", ip, result);
     }

@@ -4,14 +4,14 @@ namespace CodeWF.Tools.Core.Helpers;
 
 public static class ImageHelper
 {
-    public static async Task ToIconAsync(string sourceImagePath,
+    public static async Task ToIconAsync(string? sourceImagePath,
         ExportIconKind exportKind = ExportIconKind.Merge, string? outputDirectoryOrIconPath = default,
         IconSizeKind sizeKind = IconSizeKind.Size16X16 | IconSizeKind.Size24X24 | IconSizeKind.Size32X32 |
                                 IconSizeKind.Size48X48 |
                                 IconSizeKind.Size64X64 | IconSizeKind.Size96X96 | IconSizeKind.Size128X128 |
                                 IconSizeKind.Size256X256)
     {
-        if (!File.Exists(sourceImagePath))
+        if (sourceImagePath.IsNullOrWhiteSpace() || !File.Exists(sourceImagePath))
         {
             throw new FileNotFoundException("Source image file not found.", sourceImagePath);
         }

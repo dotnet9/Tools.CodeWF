@@ -67,7 +67,7 @@ public class MainViewModel : ViewModelBase
         });
     }
 
-    private void MenuChangedHandler(object sender, EventArgs e)
+    private void MenuChangedHandler(object? sender, EventArgs e)
     {
         SearchMenuItems.Clear();
         MenuItems.ForEach(firstMenuItem =>

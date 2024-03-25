@@ -14,9 +14,9 @@ public class IPTencentQueryService : IIPQueryService
         string key = "TAOBZ-YQ3KU-R4NVU-BT4IA-2P2MF-RDBVJ";
         string url = $"https://apis.map.qq.com/ws/location/v1/ip?ip={ip}&key={key}";
         string json = await _httpClient.GetStringAsync(url, cancellationToken);
-        TencentLbsResponse? e = JsonSerializer.Deserialize<TencentLbsResponse>(json);
+        var e = JsonSerializer.Deserialize<TencentLbsResponse>(json);
 
-        return new IPQueryInfo("腾讯地图", ip, e.ToString());
+        return new IPQueryInfo("腾讯地图", ip, e?.ToString());
     }
 }
 

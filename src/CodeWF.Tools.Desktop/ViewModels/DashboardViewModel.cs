@@ -14,7 +14,7 @@ public class DashboardViewModel : ViewModelBase
 
     public ObservableCollection<ToolMenuItem> MenuItems { get; } = new();
 
-    private void MenuChangedHandler(object sender, EventArgs e)
+    private void MenuChangedHandler(object? sender, EventArgs e)
     {
         MenuItems.Clear();
         _toolManagerService.MenuItems.ForEach(firstMenuItem =>

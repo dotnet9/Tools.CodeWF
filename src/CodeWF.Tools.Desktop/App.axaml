@@ -7,6 +7,7 @@
         <StyleInclude Source="avares://Semi.Avalonia/Themes/Index.axaml" />
         <StyleInclude Source="avares://Semi.Avalonia.DataGrid/Index.axaml" />
         <u-semi:SemiTheme Locale="zh-CN" />
+        <StyleInclude Source="Icons/Icons.axaml"/>
     </prism:PrismApplication.Styles>
     <prism:PrismApplication.Resources>
         <FontFamily x:Key="Douyin">avares://CodeWF.Tools.Desktop/Assets/Fonts/DouyinSansBold.ttf#Douyin</FontFamily>

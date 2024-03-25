@@ -3,11 +3,15 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:prism="http://prismlibrary.com/"
+             xmlns:converters="clr-namespace:CodeWF.Tools.Desktop.Converters"
              xmlns:viewModels="clr-namespace:CodeWF.Tools.Desktop.ViewModels"
              prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:DataType="viewModels:DashboardViewModel"
              x:Class="CodeWF.Tools.Desktop.Views.DashboardView" Margin="0">
+    <UserControl.Resources>
+        <converters:IconConverter x:Key="IconConverter" />
+    </UserControl.Resources>
     <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Hidden">
         <ItemsControl ItemsSource="{Binding MenuItems, Mode=OneWay}">
             <ItemsControl.ItemTemplate>
@@ -30,7 +34,8 @@
                                                 <Grid RowDefinitions="Auto, Auto" ColumnDefinitions="Auto, *">
                                                     <PathIcon Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Width="36"
                                                               Height="36"
-                                                              Data="{Binding Icon}" Margin="0 0 10 0"
+                                                              Data="{Binding Icon, Converter={StaticResource IconConverter}}"
+                                                              Margin="0 0 10 0"
                                                               VerticalAlignment="Center"
                                                               HorizontalAlignment="Center" />
                                                     <TextBlock Text="{Binding Header}" Grid.Row="0" Grid.Column="1"
@@ -40,17 +45,16 @@
                                                                Grid.Column="1" />
                                                 </Grid>
                                             </ToolTip.Tip>
-                                            <Grid RowDefinitions="Auto, Auto" ColumnDefinitions="Auto, *">
-                                                <PathIcon Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Width="36"
+                                            <Grid ColumnDefinitions="Auto, *">
+                                                <PathIcon Grid.Column="0" Width="36"
                                                           Height="36"
-                                                          Data="{Binding Icon}" Margin="0 0 10 0"
+                                                          Data="{Binding Icon, Converter={StaticResource IconConverter}}"
+                                                          Margin="0 0 10 0"
                                                           VerticalAlignment="Center"
                                                           HorizontalAlignment="Center" />
-                                                <TextBlock Text="{Binding Header}" Grid.Row="0" Grid.Column="1"
-                                                           FontSize="14" />
-                                                <TextBlock Text="{Binding Description}" FontSize="12"
-                                                           TextTrimming="CharacterEllipsis" Grid.Row="1"
-                                                           Grid.Column="1" />
+                                                <TextBlock Text="{Binding Header}" Grid.Column="1"
+                                                           FontSize="14" TextWrapping="WrapWithOverflow"
+                                                           VerticalAlignment="Center" />
                                             </Grid>
                                         </Button>
                                     </Border>

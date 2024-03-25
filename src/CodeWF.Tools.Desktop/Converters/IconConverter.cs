@@ -4,9 +4,14 @@ public class IconConverter : IValueConverter
 {
     public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
     {
-        if (value is string icon)
+        if (value is not string icon)
         {
-            return StreamGeometry.Parse(icon);
+            return AvaloniaProperty.UnsetValue;
+        }
+
+        if (Application.Current?.FindResource(icon) is StreamGeometry img)
+        {
+            return img;
         }
 
         return AvaloniaProperty.UnsetValue;

@@ -2,11 +2,11 @@
 	<PropertyGroup>
 		<Authors>沙漠尽头的狼</Authors>
 		<Company>codewf.com</Company>
-		<Product>码界工坊</Product>
+		<Product>码界工坊工具箱</Product>
 		<Copyright>(C) 2019-2024 codewf.com</Copyright>
-		<AssemblyVersion>0.1.0.0</AssemblyVersion>
-		<FileVersion>0.1.0.0</FileVersion>
-		<Version>0.1.0.0</Version>
+		<AssemblyVersion>0.1.0.1</AssemblyVersion>
+		<FileVersion>0.1.0.1</FileVersion>
+		<Version>0.1.0.1</Version>
 		<TargetFramework>net9.0</TargetFramework>
 		<LangVersion>latest</LangVersion>
 		<Nullable>enable</Nullable>

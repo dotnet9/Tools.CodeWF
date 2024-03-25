@@ -1,21 +1,14 @@
 ﻿namespace CodeWF.Tools.Core.Services.IPQuery;
 
-public class IPAMapQueryService : IIPQueryService
+public class IPAMapQueryService(HttpClient httpClient) : IIPQueryService
 {
-    private readonly HttpClient _httpClient;
-
-    public IPAMapQueryService(HttpClient httpClient)
-    {
-        _httpClient = httpClient;
-    }
-
     public async Task<IPQueryInfo> QueryAsync(string ip, CancellationToken cancellationToken)
     {
         string key = "0f48c54461148ea1e670b676cbd1700b";
         string url = $"https://restapi.amap.com/v5/ip?key={key}&ip={ip}&type=4";
-        string json = await _httpClient.GetStringAsync(url, cancellationToken);
+        string json = await httpClient.GetStringAsync(url, cancellationToken);
         AmapResponse? obj = JsonSerializer.Deserialize<AmapResponse>(json);
-        return new IPQueryInfo("高德地图", ip, obj.ToString());
+        return new IPQueryInfo("高德地图", ip, obj?.ToString());
     }
 }
 

@@ -11,7 +11,7 @@ public class TestModule : IModule
 
     public void OnInitialized(IContainerProvider containerProvider)
     {
-        IRegionManager? regionManager = containerProvider.Resolve<IRegionManager>();
+        var regionManager = containerProvider.Resolve<IRegionManager>();
         regionManager.RegisterViewWithRegion<MessageTestView>(RegionNames.ContentRegion);
     }
 

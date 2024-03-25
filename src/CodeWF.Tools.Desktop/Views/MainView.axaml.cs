@@ -27,14 +27,4 @@ public partial class MainView : UserControl
         notificationService.SetHostWindow(level);
         fileChooserService.SetHostWindow(level);
     }
-
-    private void ToggleButton_OnIsCheckedChanged(object sender, RoutedEventArgs e)
-    {
-        Application? app = Application.Current;
-        if (app is not null)
-        {
-            ThemeVariant theme = app.ActualThemeVariant;
-            app.RequestedThemeVariant = theme == ThemeVariant.Dark ? ThemeVariant.Light : ThemeVariant.Dark;
-        }
-    }
 }

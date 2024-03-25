@@ -1,4 +1,8 @@
-﻿namespace CodeWF.Tools.Desktop.ViewModels;
+﻿using CodeWF.Tools.Desktop.Helpers;
+using System.Reactive.Concurrency;
+using System.Reactive.Linq;
+
+namespace CodeWF.Tools.Desktop.ViewModels;
 
 public class MainViewModel : ViewModelBase
 {
@@ -22,6 +26,10 @@ public class MainViewModel : ViewModelBase
         SearchMenuItems = new ObservableCollection<ToolMenuItem>();
         MenuItems = toolManagerService.MenuItems;
         toolManagerService.ToolMenuChanged += MenuChangedHandler;
+
+        this.WhenAnyValue(x => x.DarkModeEnabled)
+            .Skip(1)
+            .Subscribe(ChangeTheme);
     }
 
     public ObservableCollection<ToolMenuItem> SearchMenuItems { get; set; }
@@ -50,6 +58,14 @@ public class MainViewModel : ViewModelBase
     {
         get => _selectedMenuStatus;
         set => this.RaiseAndSetIfChanged(ref _selectedMenuStatus, value);
+    }
+
+    private bool _darkModeEnabled;
+
+    public bool DarkModeEnabled
+    {
+        get => _darkModeEnabled;
+        set => this.RaiseAndSetIfChanged(ref _darkModeEnabled, value);
     }
 
     public ObservableCollection<ToolMenuItem> MenuItems { get; }
@@ -133,5 +149,10 @@ public class MainViewModel : ViewModelBase
                 return;
             }
         }
+    }
+
+    private void ChangeTheme(bool isDark)
+    {
+        RxApp.MainThreadScheduler.Schedule(() => ThemeHelper.ApplyTheme(isDark ? Theme.Dark : Theme.Light));
     }
 }

@@ -2,12 +2,16 @@
                         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                         xmlns:u-semi="https://irihi.tech/ursa/themes/semi"
                         xmlns:prism="http://prismlibrary.com/"
-                        x:Class="CodeWF.Tools.Desktop.App">
+                        x:Class="CodeWF.Tools.Desktop.App"
+                        RequestedThemeVariant="Dark"
+                        x:CompileBindings="True">
     <prism:PrismApplication.Styles>
         <StyleInclude Source="avares://Semi.Avalonia/Themes/Index.axaml" />
         <StyleInclude Source="avares://Semi.Avalonia.DataGrid/Index.axaml" />
         <u-semi:SemiTheme Locale="zh-CN" />
-        <StyleInclude Source="Icons/Icons.axaml"/>
+        <StyleInclude Source="avares://CodeWF.Tools.Desktop/Styles/Themes/Semi.axaml" />
+        <StyleInclude Source="Icons/Icons.axaml" />
+        <StyleInclude Source="avares://CodeWF.Tools.Desktop/Styles/Styles.axaml" />
     </prism:PrismApplication.Styles>
     <prism:PrismApplication.Resources>
         <FontFamily x:Key="Douyin">avares://CodeWF.Tools.Desktop/Assets/Fonts/DouyinSansBold.ttf#Douyin</FontFamily>

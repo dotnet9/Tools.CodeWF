@@ -6,22 +6,54 @@
         xmlns:prism="http://prismlibrary.com/"
         prism:ViewModelLocator.AutoWireViewModel="True"
         xmlns:views="clr-namespace:CodeWF.Tools.Desktop.Views"
-        TransparencyLevelHint="AcrylicBlur"
-        ExtendClientAreaToDecorationsHint="True"
-        mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="600"
+        x:CompileBindings="True"
+        mc:Ignorable="d" 
+        MinWidth="720" MinHeight="480"
+        d:DesignWidth="720" d:DesignHeight="480"
+        Width="720" Height="480"
         WindowStartupLocation="CenterScreen"
-        Width="900" Height="600"
+        Background="{x:Null}"
+        TransparencyLevelHint="AcrylicBlur"
+        ExtendClientAreaTitleBarHeightHint="50"
+        ExtendClientAreaToDecorationsHint="True"
+        ExtendClientAreaChromeHints="Default, PreferSystemChrome, OSXThickTitleBar"
+        Focusable="True"
         x:Class="CodeWF.Tools.Desktop.Views.MainWindow"
+        x:Name="MainWindowView"
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/favicon.ico"
-        Title="{Binding Title}">
+        Title="{Binding Title}"
+        RenderOptions.BitmapInterpolationMode="HighQuality"
+        RenderOptions.TextRenderingMode="SubpixelAntialias"
+        RenderOptions.RequiresFullOpacityHandling="True">
+    <Window.Styles>
+        <Style Selector="TitleBar">
+            <Setter Property="Foreground" Value="{DynamicResource AcrylicTrimForeground}" />
+        </Style>
+    </Window.Styles>
     <Design.DataContext>
         <vm:MainWindowViewModel />
     </Design.DataContext>
-    <views:MainView />
+    
     <Window.Styles>
         <Style Selector="Window">
-            <Setter Property="FontFamily" Value="{StaticResource Douyin}" />
+            <Setter Property="FontFamily" Value="{StaticResource MonospacedFont}" />
         </Style>
     </Window.Styles>
+
+    <Panel Margin="{Binding #MainWindowView.OffScreenMargin}">
+        <!--
+    WARNING:
+    Do not remove as the OpacityMask is needed for RenderOptions.TextRenderingMode="SubpixelAntialias"
+    to work without artifacts until the https://github.com/AvaloniaUI/Avalonia/issues/13265 issue is fixed in Avalonia
+    -->
+        <Panel.OpacityMask>
+            <LinearGradientBrush StartPoint="0%,0%"
+                                 EndPoint="100%,0%">
+                <GradientStop Color="White" Offset="0" />
+                <GradientStop Color="White" Offset="1" />
+            </LinearGradientBrush>
+        </Panel.OpacityMask>
+        <views:MainView />
+    </Panel>
 </Window>

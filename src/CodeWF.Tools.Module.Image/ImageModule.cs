@@ -4,7 +4,7 @@ public class ImageModule : IModule
 {
     public ImageModule(IToolManagerService toolManagerService)
     {
-        toolManagerService.AddTool(ToolType.Image, ImageToolInfo.IconConverterName,
+        toolManagerService.AddTool(ToolType.Image, ImageToolInfo.IconConverterTitle,
             ImageToolInfo.IconConverterDescription, nameof(IconConverterView), IconHelper.IconConverter,
             ToolStatus.Developing);
     }

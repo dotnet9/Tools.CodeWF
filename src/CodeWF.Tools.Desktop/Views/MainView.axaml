@@ -12,6 +12,11 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:DataType="vm:MainViewModel"
              x:Class="CodeWF.Tools.Desktop.Views.MainView">
+	<UserControl.Styles>
+		<Style Selector="TitleBar">
+            <Setter Property="Foreground" Value="{DynamicResource AcrylicTrimForeground}" />
+        </Style>
+	</UserControl.Styles>
     <UserControl.Resources>
         <converters:IconConverter x:Key="IconConverter" />
     </UserControl.Resources>
@@ -56,7 +61,7 @@
             <ToggleSwitch Grid.Row="0" Grid.Column="1" CornerRadius="4"
                           HorizontalAlignment="Right"
                           Padding="2" Margin="0 0 120 0"
-                          IsCheckedChanged="ToggleButton_OnIsCheckedChanged"
+                          IsChecked="{Binding DarkModeEnabled}"
                           Theme="{DynamicResource ButtonToggleSwitch}">
                 <ToggleSwitch.OnContent>
                     <PathIcon

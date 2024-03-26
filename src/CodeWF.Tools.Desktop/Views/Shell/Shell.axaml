@@ -1,0 +1,15 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:CodeWF.Tools.Desktop.ViewModels"
+             xmlns:shell="using:CodeWF.Tools.Desktop.Views.Shell"
+             xmlns:behaviors="clr-namespace:CodeWF.Tools.Desktop.Behaviors"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="459"
+             x:DataType="vm:MainViewModel"
+             x:CompileBindings="True"
+             x:Class="CodeWF.Tools.Desktop.Views.Shell.Shell">
+    <Interaction.Behaviors>
+        <behaviors:RegisterNotificationHostBehavior />
+    </Interaction.Behaviors>
+</UserControl>

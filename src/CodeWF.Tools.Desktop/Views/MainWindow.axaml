@@ -1,13 +1,14 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:vm="using:CodeWF.Tools.Desktop.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:prism="http://prismlibrary.com/"
+        xmlns:vm="using:CodeWF.Tools.Desktop.ViewModels"
+        xmlns:shell="using:CodeWF.Tools.Desktop.Views.Shell"
         prism:ViewModelLocator.AutoWireViewModel="True"
         xmlns:views="clr-namespace:CodeWF.Tools.Desktop.Views"
         x:CompileBindings="True"
-        mc:Ignorable="d" 
+        mc:Ignorable="d"
         MinWidth="720" MinHeight="480"
         d:DesignWidth="720" d:DesignHeight="480"
         Width="720" Height="480"
@@ -34,7 +35,7 @@
     <Design.DataContext>
         <vm:MainWindowViewModel />
     </Design.DataContext>
-    
+
     <Window.Styles>
         <Style Selector="Window">
             <Setter Property="FontFamily" Value="{StaticResource MonospacedFont}" />
@@ -54,6 +55,6 @@
                 <GradientStop Color="White" Offset="1" />
             </LinearGradientBrush>
         </Panel.OpacityMask>
-        <views:MainView />
+        <shell:Shell />
     </Panel>
 </Window>

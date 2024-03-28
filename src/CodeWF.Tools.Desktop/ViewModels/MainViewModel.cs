@@ -32,6 +32,8 @@ public class MainViewModel : ViewModelBase
             .Subscribe(ChangeTheme);
     }
 
+    public IObservable<bool> IsMainContentEnabled { get; }
+
     public ObservableCollection<ToolMenuItem> SearchMenuItems { get; set; }
 
     public ToolMenuItem? SearchSelectedItem

@@ -1,4 +1,4 @@
-﻿namespace CodeWF.ViewModels
+﻿namespace CodeWF.ViewModels.Shell
 {
     public class MainViewModel : ViewModelBase
     {

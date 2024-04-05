@@ -1,11 +1,11 @@
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
-namespace CodeWF.Views
+namespace CodeWF.Views.Shell
 {
-    public partial class MainWindow : Window
+    public class Shell : UserControl
     {
-        public MainWindow()
+        public Shell()
         {
             InitializeComponent();
         }

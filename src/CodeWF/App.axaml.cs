@@ -2,7 +2,9 @@ using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using CodeWF.ViewModels;
+using CodeWF.ViewModels.Shell;
 using CodeWF.Views;
+using CodeWF.Views.Shell;
 
 namespace CodeWF
 {
@@ -17,17 +19,11 @@ namespace CodeWF
         {
             if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
-                desktop.MainWindow = new MainWindow
-                {
-                    DataContext = new MainViewModel()
-                };
+                desktop.MainWindow = new MainWindow { DataContext = new MainWindowViewModel() };
             }
             else if (ApplicationLifetime is ISingleViewApplicationLifetime singleViewPlatform)
             {
-                singleViewPlatform.MainView = new MainView
-                {
-                    DataContext = new MainViewModel()
-                };
+                singleViewPlatform.MainView = new Shell { DataContext = new MainViewModel() };
             }
 
             base.OnFrameworkInitializationCompleted();

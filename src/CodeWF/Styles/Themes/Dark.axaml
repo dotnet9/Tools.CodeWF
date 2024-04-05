@@ -1,0 +1,16 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Color x:Key="AcrylicTrimForeground">White</Color>
+    <Color x:Key="AcrylicTrimBackground">#A0202020</Color>
+
+    <LinearGradientBrush x:Key="LogoBaseColor" StartPoint="616.03,205.77002" EndPoint="371.41003,625.12">
+        <LinearGradientBrush.GradientStops>
+            <GradientStop Offset="0" Color="#FFFFFFFF" />
+            <GradientStop Offset="0.25" Color="#FFE1E1E1" />
+            <GradientStop Offset="0.54" Color="#FFC6C6C6" />
+            <GradientStop Offset="0.79999995" Color="#FFB5B5B5" />
+            <GradientStop Offset="0.99" Color="#FFAFAFAF" />
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+</ResourceDictionary>

@@ -3,7 +3,11 @@
 		<DisableImplicitNamespaceImports>true</DisableImplicitNamespaceImports>
 		<AvaloniaUseCompiledBindingsByDefault>false</AvaloniaUseCompiledBindingsByDefault>
 		<NoWarn>1701;1702;1705;1591;1573;CA1031</NoWarn>
+		<EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+		<CompilerGeneratedFilesOutputPath>$(BaseIntermediateOutputPath)\$(Configuration)\$(TargetFramework)\GeneratedFiles</CompilerGeneratedFilesOutputPath>
+		<PathMap>$(MSBuildProjectDirectory)\=CodeWF</PathMap>
 		<AvaloniaNameGeneratorIsEnabled>false</AvaloniaNameGeneratorIsEnabled>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -18,18 +22,11 @@
 		<!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
 		<PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.1.0-beta1" />
 		<PackageReference Include="Avalonia.Xaml.Behaviors" Version="11.1.0-beta1" />
+		<PackageReference Include="DynamicData" Version="8.1.1"/>
 	</ItemGroup>
 
 	<ItemGroup>
-		<Folder Include="Helpers\" />
-		<Folder Include="IServices\" />
-		<Folder Include="Services\" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<Compile Update="Views\Shell\Shell.axaml.cs">
-			<DependentUpon>Shell.axaml</DependentUpon>
-		</Compile>
+		<ProjectReference Include="..\CodeWF.Generators\CodeWF.Generators.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" AdditionalProperties="IsRidAgnostic=true" />
 	</ItemGroup>
 	<ItemGroup>
 		<RuntimeHostConfigurationOption Include="System.Globalization.Invariant" Value="true" />

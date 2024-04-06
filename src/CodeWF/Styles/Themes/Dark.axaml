@@ -4,6 +4,9 @@
     <Color x:Key="AcrylicTrimForeground">White</Color>
     <Color x:Key="AcrylicTrimBackground">#A0202020</Color>
 
+    <Color x:Key="LogoFixedAccentColor">#97D234</Color>
+    <Color x:Key="LogoFixedForegroundColor">#D8DED7</Color>
+
     <LinearGradientBrush x:Key="LogoBaseColor" StartPoint="616.03,205.77002" EndPoint="371.41003,625.12">
         <LinearGradientBrush.GradientStops>
             <GradientStop Offset="0" Color="#FFFFFFFF" />

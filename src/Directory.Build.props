@@ -8,6 +8,7 @@
 		<FileVersion>0.1.0.0</FileVersion>
 		<Version>0.1.0.0</Version>
 		<TargetFramework>net9.0</TargetFramework>
+		<AnalysisLevel>latest</AnalysisLevel>
 		<LangVersion>latest</LangVersion>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>

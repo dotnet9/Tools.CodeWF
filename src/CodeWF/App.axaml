@@ -1,18 +1,17 @@
 <Application xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="using:CodeWF"
+             xmlns:u-semi="https://irihi.tech/ursa/themes/semi"
              x:Class="CodeWF.App"
              RequestedThemeVariant="Default">
     <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
 
-    <Application.DataTemplates>
-        <local:ViewLocator />
-    </Application.DataTemplates>
-
     <Application.Styles>
-        <FluentTheme />
+        <StyleInclude Source="avares://Semi.Avalonia/Themes/Index.axaml" />
+        <StyleInclude Source="avares://Semi.Avalonia.DataGrid/Index.axaml" />
         <StyleInclude Source="avares://CodeWF/Styles/Themes/Fluent.axaml" />
 		<StyleInclude Source="avares://CodeWF/Icons/Icons.axaml" />
 		<StyleInclude Source="avares://CodeWF/Styles/Styles.axaml" />
+        <u-semi:SemiTheme/>
     </Application.Styles>
 </Application>

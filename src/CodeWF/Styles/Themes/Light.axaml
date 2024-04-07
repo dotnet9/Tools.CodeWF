@@ -1,6 +1,9 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Color x:Key="RegionColor">#FFF8F9FB</Color>
 
+    <Color x:Key="TileRegionColor">White</Color>
+    <Color x:Key="TileBorderColor">#14000000</Color>
     <Color x:Key="AcrylicTrimForeground">#FCFCFC</Color>
     <Color x:Key="AcrylicTrimBackground">#90134074</Color>
 

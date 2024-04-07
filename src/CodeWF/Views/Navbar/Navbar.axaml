@@ -1,0 +1,45 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:u="https://irihi.tech/ursa"
+             xmlns:navbar="clr-namespace:CodeWF.ViewModels.Navbar"
+             xmlns:navItems="clr-namespace:CodeWF.ViewModels.Navbar.NavItems"
+             xmlns:converters="clr-namespace:CodeWF.Converters"
+             x:DataType="navbar:NavbarViewModel"
+             mc:Ignorable="d"
+             x:Class="CodeWF.Views.Navbar.Navbar">
+    <UserControl.Resources>
+        <converters:IconConverter x:Key="IconConverter" />
+    </UserControl.Resources>
+    <Design.DataContext>
+        <navbar:NavbarViewModel/>
+    </Design.DataContext>
+	<u:NavMenu
+        HeaderBinding="{Binding Header}"
+        IconBinding="{Binding Icon}"
+        IsHorizontalCollapsed="{Binding #Collapse.IsChecked, Mode=OneWay}"
+        ItemsSource="{Binding MenuItems}"
+        SelectedItem="{Binding SelectedMenuItem}"
+        SubMenuBinding="{Binding Children}"
+        HorizontalAlignment="Stretch">
+        <u:NavMenu.Styles>
+            <Style x:DataType="navItems:ToolMenuItem" Selector="u|NavMenuItem">
+                <Setter Property="IsSeparator" Value="{Binding IsSeparator}" />
+            </Style>
+        </u:NavMenu.Styles>
+        <u:NavMenu.IconTemplate>
+            <DataTemplate DataType="{x:Type x:String}">
+                <u:TwoTonePathIcon
+                    Width="16"
+                    Height="16"
+                    ActiveForeground="{DynamicResource SemiBlue5}"
+                    ActiveStrokeBrush="{DynamicResource SemiBlue5}"
+                    Data="{Binding Converter={StaticResource IconConverter}}"
+                    Foreground="{DynamicResource SemiGrey5}"
+                    IsActive="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=u:NavMenuItem}, Path=IsHighlighted, Mode=TwoWay}"
+                    StrokeBrush="{DynamicResource SemiGrey5}" />
+            </DataTemplate>
+        </u:NavMenu.IconTemplate>
+    </u:NavMenu>
+</UserControl>

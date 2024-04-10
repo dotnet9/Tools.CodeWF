@@ -1,9 +1,10 @@
-﻿namespace CodeWF.ViewModels.Shell
+﻿using CodeWF.Common;
+
+namespace CodeWF.ViewModels.Shell
 {
     public class MainViewModel : ViewModelBase
     {
-#pragma warning disable CA1822 // Mark members as static
-        public string Greeting => "Welcome to Avalonia!";
-#pragma warning restore CA1822 // Mark members as static
+        public string Title => AppInfo.ToolName;
+        public IObservable<bool> IsMainContentEnabled { get; }
     }
 }

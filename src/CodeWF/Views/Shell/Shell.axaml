@@ -10,11 +10,31 @@
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
          to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
-		<vm:MainViewModel />
+        <vm:MainViewModel />
     </Design.DataContext>
     <Panel>
-        <shell:Background />
-        <shell:MainScreen x:CompileBindings="False" />
+        <shell:MainScreen x:CompileBindings="False" IsHitTestVisible="{Binding IsMainContentEnabled^, FallbackValue=True}">
+            <shell:MainScreen.Transitions>
+                <Transitions>
+                    <EffectTransition Property="Effect"
+                                      Delay="0:0:0.25"
+                                      Duration="0:0:0.25"
+                                      Easing="{StaticResource FluentEasing}" />
+                </Transitions>
+            </shell:MainScreen.Transitions>
+            <shell:MainScreen.Styles>
+                <Style Selector="shell|MainScreen[IsHitTestVisible=True]">
+                    <Setter Property="Effect">
+                        <BlurEffect Radius="0.0" />
+                    </Setter>
+                </Style>
+                <Style Selector="shell|MainScreen[IsHitTestVisible=False]">
+                    <Setter Property="Effect">
+                        <BlurEffect Radius="3.0" />
+                    </Setter>
+                </Style>
+            </shell:MainScreen.Styles>
+        </shell:MainScreen>
     </Panel>
 
 </UserControl>

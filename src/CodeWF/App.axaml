@@ -3,7 +3,7 @@
              xmlns:local="using:CodeWF"
              xmlns:u-semi="https://irihi.tech/ursa/themes/semi"
              x:Class="CodeWF.App"
-             RequestedThemeVariant="Default">
+             RequestedThemeVariant="Dark">
     <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
 
     <Application.Styles>
